@@ -1,20 +1,10 @@
 from django.shortcuts import render
-from .. cadastro.models import cadastroModel
-from datetime import date
+from django.http import HttpResponse 
 
-def index(request):
-    return render(request, 'index.html')
+from .models import cadastro
 
-def cadastro(request):
-    verifica_feriado = False
-    nome_feriado = ''
-    hoje = date.today()
-    feriados = cadastroModel.objects.all()
-    for feriado in feriados:
-        if feriado.dia == hoje.day:
-            if feriado.mes == hoje.month:
-                verifica_feriado = True
-                nome_feriado = feriado.nome
-    contexto = {'feriado':verifica_feriado,
-                'nome_feriado':nome_feriado}
-    return render(request, 'mostra_feriado.html', contexto)
+def listaVacinados(request):
+     
+    return render(request, 'cadastro/list.html', {'cadastro' : cadastro} )
+
+

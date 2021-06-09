@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block title %}Lista de Vacinados{% endblock %} {% block content %}
+<div class="offset-1 col-10 list-div">
+    <h1>Lista de Vacinados</h1>
+    <a id="add-link" href="newpeople/">
+
+        <div class="col-2 add-div">
+
+            <i class="fas fa-plus"></i> Adicionar
+
+        </div>
+
+    </a>
+    <div class="col-9 search-div">
+        <input type="text" id="search" name="search" placeholder="Digite o nome da pessoa que já está cadastrada">
+        <i class="fas fa-search"></i>
+    </div>
+    <ul class="vacinados-list">
+        <li class="vacinados-item">
+            <span>Nome da pessoa</span>
+            <span><i class="fas fa-trash"></i></span>
+            <span><i class="fas fa-edit"></i></span>
+        </li>
+        <li class="vacinados-item">
+            <span>Nome da pessoa</span>
+            <span><i class="fas fa-trash"></i></span>
+            <span><i class="fas fa-edit"></i></span>
+        </li>
+        <li class="vacinados-item">
+            <span>Nome da pessoa</span>
+            <span><i class="fas fa-trash"></i></span>
+            <span><i class="fas fa-edit"></i></span>
+        </li>
+        <li class="vacinados-item">
+            <span>Nome da pessoa</span>
+            <span><i class="fas fa-trash"></i></span>
+            <span><i class="fas fa-edit"></i></span>
+        </li>
+    </ul>
+</div>
+{% endblock %}
