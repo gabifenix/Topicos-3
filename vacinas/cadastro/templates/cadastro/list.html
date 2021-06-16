@@ -1,40 +1,37 @@
-{% extends 'base.html' %} {% block title %}Lista de Vacinados{% endblock %} {% block content %}
+{% extends 'base.html' %}
+
+{% block title %}Lista de Vacinados{% endblock %}
+
+{% block content %}
 <div class="offset-1 col-10 list-div">
-    <h1>Lista de Vacinados</h1>
-    <a id="add-link" href="newpeople/">
-
+    <h1>Lista de Vacinados</h1> 
+    <a id="add-link" href="novocadastro/">
         <div class="col-2 add-div">
-
-            <i class="fas fa-plus"></i> Adicionar
-
+            <i class="fas fa-plus"></i> Adicionar pessoa
         </div>
-
     </a>
+
     <div class="col-9 search-div">
-        <input type="text" id="search" name="search" placeholder="Digite o nome da pessoa que já está cadastrada">
-        <i class="fas fa-search"></i>
+        <input class="form-control" type="text" id="search" name="search" placeholder="Digite o nome da pessoa que deseja buscar">
+        <i class="fas fa-search"></i>   
     </div>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li {% if message.tags %}class="alert alert-{{message.tags}}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
     <ul class="vacinados-list">
+        {% for cadastro in cadastro%}
         <li class="vacinados-item">
-            <span>Nome da pessoa</span>
-            <span><i class="fas fa-trash"></i></span>
-            <span><i class="fas fa-edit"></i></span>
+            <span><a href="/cadastro/{{cadastro.id}}">{{cadastro.nome}}</a></span>
+            <a href="/delete/{{cadastro.id}}"><span><i class="fas fa-trash"></i></span></a>
+            <a href="/edit/{{cadastro.id}}"><span><i class="fas fa-edit"></i></span></a>
         </li>
-        <li class="vacinados-item">
-            <span>Nome da pessoa</span>
-            <span><i class="fas fa-trash"></i></span>
-            <span><i class="fas fa-edit"></i></span>
-        </li>
-        <li class="vacinados-item">
-            <span>Nome da pessoa</span>
-            <span><i class="fas fa-trash"></i></span>
-            <span><i class="fas fa-edit"></i></span>
-        </li>
-        <li class="vacinados-item">
-            <span>Nome da pessoa</span>
-            <span><i class="fas fa-trash"></i></span>
-            <span><i class="fas fa-edit"></i></span>
-        </li>
+        {% endfor %}
     </ul>
 </div>
 {% endblock %}

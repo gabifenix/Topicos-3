@@ -1,10 +1,10 @@
 from django.db import models
 
-class cadastro(models.Model):
+class Cadastro(models.Model):
     nome = models.CharField('Nome',max_length=255)
-    idade = models.IntegerField('Idade')
-    data = models.IntegerField('Data')
-    numero_da_dose = models.IntegerField('Numero da Dose')
+    idade = models.CharField('Idade',max_length=255)
+    data = models.CharField('Data',max_length=255)
+    numero_da_dose = models.CharField('Numero da Dose',max_length=255)
 
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
