@@ -8,7 +8,8 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" integrity="undefined" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/80eac5945f.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">    
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="container-fluid">
@@ -20,26 +21,12 @@
             
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link" href="/">Lista de Vacinados</a>
                     </li>
                     <li class="nav-item">
                             <a class="nav-link" href="#">Cadastrar</a>
                         </li>
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="/accounts/login">Entrar</a>
-                    </li>
-                    {% endif %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Sobre nós</a>
-                    </li>
-                    {% if user.is_authenticated %}
-                    <li class="nav-item">
-                            <a class="nav-link" href="/accounts/logout">Sair</a>
-                        </li>
-                    {% endif %}
                 </ul>
             </div>
         </nav>

@@ -1,11 +1,19 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.core.paginator import Paginator
 from django.http import HttpResponse 
 from .models import Cadastro
 from .forms import CadastroForm
 from django.contrib import messages
 
 def listaVacinados(request):
-    cadastro = Cadastro.objects.all().order_by('-created_at')
+    cadastro_list = Cadastro.objects.all().order_by('-created_at')
+
+    paginator = Paginator(cadastro_list, 3)
+
+    page = request.GET.get('page')
+
+    cadastro = paginator.get_page(page)
+
     return render(request, 'cadastro/list.html', {'cadastro' : cadastro} )
 
 def cadastroView(request, id):

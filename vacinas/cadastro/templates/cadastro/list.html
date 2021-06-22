@@ -28,10 +28,26 @@
         {% for cadastro in cadastro%}
         <li class="vacinados-item">
             <span><a href="/cadastro/{{cadastro.id}}">{{cadastro.nome}}</a></span>
-            <a href="/delete/{{cadastro.id}}"><span><i class="fas fa-trash"></i></span></a>
+            <a href="/delete/{{cadastro.id}}" class="delete-btn"><span><i class="fas fa-trash"></i></span></a>
             <a href="/edit/{{cadastro.id}}"><span><i class="fas fa-edit"></i></span></a>
         </li>
         {% endfor %}
     </ul>
+    <div class="pagination">
+        <span class="step-links">
+            {% if cadastro.has_previous %}
+                <a href="?page={{ cadastro.previous_page_number }}"><i class="fas fa-arrow-left"></i></a>
+            {% endif %}
+
+            <span class="current">
+                {{ cadastro.number }} de {{ cadastro.paginatior.num_pages}}
+            </span>
+
+            {% if cadastro.has_next %}
+                <a href="?page={{ cadastro.next_page_number }}"><i class="fas fa-arrow-right"></i></a>
+            {% endif %}
+
+        </span>
+    </div>
 </div>
 {% endblock %}
